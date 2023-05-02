@@ -38,7 +38,7 @@ def upload(secrets, media_file, timeout=None):
     try:
         response = requests.post(upload_url, data=f, headers=header, timeout=timeout)
     except requests.Timeout as exc:
-        throw Exception("TimeoutException on upload")
+        raise Exception("TimeoutException on upload")
     if response.ok:
         return response.content.decode('utf-8')
     return None
