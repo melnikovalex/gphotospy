@@ -569,7 +569,7 @@ class Media:
             }
         }
 
-    def stage_media(self, media_file, description="", timeout=timeout):
+    def stage_media(self, media_file, description="", timeout=None):
         """
         Stage media to be added to the photo account,
         by uploading to Google server.
