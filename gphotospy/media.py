@@ -569,7 +569,7 @@ class Media:
             }
         }
 
-    def stage_media(self, media_file, description=""):
+    def stage_media(self, media_file, description="", timeout=timeout):
         """
         Stage media to be added to the photo account,
         by uploading to Google server.
@@ -583,7 +583,8 @@ class Media:
             Path of the media file to be uploaded
         description: str, optional
             Description to display in the media info panel
-
+        timeout: float
+            Timeout in seconds (optional)
         Returns
         -------
         New media object if successfull, None if unsuccessfull.
@@ -598,7 +599,7 @@ class Media:
 
         >>> media_manager.batchCreate()
         """
-        upload_token = upload(self._secrets, media_file)
+        upload_token = upload(self._secrets, media_file, timeout)
         if upload_token is None:
             return None
         new_media = self.get_upload_object(
