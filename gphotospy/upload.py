@@ -7,7 +7,7 @@ upload_url = 'https://photoslibrary.googleapis.com/v1/uploads'
 mimetypes.init()
 
 
-def upload(secrets, media_file):
+def upload(secrets, media_file, timeout=None):
     """
     Uploads files of media to Google Server, to put in Photos
 
@@ -18,7 +18,8 @@ def upload(secrets, media_file):
         as created in the Google Cloud Consolle
     media_file: Path
         Path to the file to upload
-
+    timeout: float
+        Timeout of request in seconds
     Returns
     -------
     Upload Token if successfull, otherwise None
@@ -35,7 +36,7 @@ def upload(secrets, media_file):
 
     f = open(media_file, 'rb').read()
 
-    response = requests.post(upload_url, data=f, headers=header)
+    response = requests.post(upload_url, data=f, headers=header, timeout=timeout)
     if response.ok:
         return response.content.decode('utf-8')
     return None
