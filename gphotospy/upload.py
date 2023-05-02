@@ -35,8 +35,10 @@ def upload(secrets, media_file, timeout=None):
     header['X-Goog-Upload-Content-Type'] = mimetypes.guess_type(media_file)[0]
 
     f = open(media_file, 'rb').read()
-
-    response = requests.post(upload_url, data=f, headers=header, timeout=timeout)
+    try:
+        response = requests.post(upload_url, data=f, headers=header, timeout=timeout)
+    except TimeoutException as exc:
+        throw Exception("TimeoutException on upload")
     if response.ok:
         return response.content.decode('utf-8')
     return None
