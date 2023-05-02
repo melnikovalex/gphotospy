@@ -37,7 +37,7 @@ def upload(secrets, media_file, timeout=None):
     f = open(media_file, 'rb').read()
     try:
         response = requests.post(upload_url, data=f, headers=header, timeout=timeout)
-    except TimeoutException as exc:
+    except requests.Timeout as exc:
         throw Exception("TimeoutException on upload")
     if response.ok:
         return response.content.decode('utf-8')
