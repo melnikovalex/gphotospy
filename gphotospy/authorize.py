@@ -13,6 +13,9 @@ token_file = f'{service_name}_{version}.token'
 scopes_arr = [
     'https://www.googleapis.com/auth/photoslibrary',
     'https://www.googleapis.com/auth/photoslibrary.sharing'
+    'https://www.googleapis.com/auth/photoslibrary.readonly.appcreateddata',
+    'https://www.googleapis.com/auth/photoslibrary.edit.appcreateddata',
+    'https://www.googleapis.com/auth/photoslibrary.appendonly'
 ]
 
 
