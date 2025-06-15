@@ -198,6 +198,6 @@ class SharedAlbum:
                 pageToken=page_token
             ).execute()
             page_token = result.get("nextPageToken", None)
-            curr_list = result.get("sharedAlbums")
+            curr_list = result.get("sharedAlbums", [])
             for album in curr_list:
                 yield album
